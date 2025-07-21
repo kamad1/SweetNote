@@ -51,15 +51,14 @@ struct RegistrationView: View {
                 Text("ХА а у меня уже есть АКК!!!!")
                     
             }
-
-//            .alert(isPresented: $showingAlert) {
-//                        Alert(
-//                            title: Text("Важное сообщение"),
-//                            message: Text("Это пример алерта в SwiftUI."),
-//                            primaryButton: .default(Text("OK")),
-//                            secondaryButton: .cancel()
-//                        )
-//                    }
+            .alert(isPresented: $viewModel.isShowAlert) {
+                        Alert(
+                            title: Text("Важное сообщение"),
+                            message: Text("Вы ввели не валидный пароль < 6 символов или не корректная почта"),
+                            primaryButton: .default(Text("OK")),
+                            secondaryButton: .cancel()
+                        )
+                    }
 
         }
         .background(.gray.opacity(0.2))

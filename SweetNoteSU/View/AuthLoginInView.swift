@@ -34,6 +34,14 @@ struct AuthLoginInView: View {
                     .background(Color.purple)
                     .cornerRadius(20)
             }
+            .alert(isPresented: $viewModel.isShowAlert) {
+                        Alert(
+                            title: Text("Важное сообщение"),
+                            message: Text("Верефицируйте почту или вы еще не регистрировались"),
+                            primaryButton: .default(Text("OK")),
+                            secondaryButton: .cancel()
+                        )
+                    }
             
             Spacer()
             

@@ -10,6 +10,7 @@ class RegistrationViewModel: ObservableObject {
     
     private var user: UserData?
     @Published var isUserCreated: Bool = false
+    @Published var isShowAlert: Bool = false
     var registrationManager: AuthManagerRegistrationUserProtocol?
     
     init(registrationManager: AuthManagerRegistrationUserProtocol?) {
@@ -26,6 +27,7 @@ class RegistrationViewModel: ObservableObject {
                 self.isUserCreated = success
                 print("User created: \(String(describing: user))")
             case .failure(let error):
+                self.isShowAlert = true
                 print("Error: \(error.localizedDescription)")
             }
             

@@ -7,7 +7,7 @@ class AuthLoginInViewModel: ObservableObject {
     @Published var isLoggedIn: Bool = false
     @Published var email: String = ""
     @Published var password: String = ""
-    
+    @Published var isShowAlert: Bool = false
     init(authLoginInManager: AuthManagerLoginInUserProtocol?) {
         self.authLoginInManager = authLoginInManager
     }
@@ -19,6 +19,7 @@ class AuthLoginInViewModel: ObservableObject {
             case .success(let isLoggedIn):
                 self.isLoggedIn = isLoggedIn
             case .failure(let error):
+                self.isShowAlert = true
                 print(error.localizedDescription)
             }
         }
