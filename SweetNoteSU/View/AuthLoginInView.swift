@@ -30,7 +30,7 @@ struct AuthLoginInView: View {
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()
-                    .frame(width: .infinity, height: 50)
+                    .frame(height: 50)
                     .background(Color.purple)
                     .cornerRadius(20)
             }
@@ -43,7 +43,6 @@ struct AuthLoginInView: View {
                 Text("Я ошибся нету Аккаунта")
                     
             }
-
         }
         .background(.gray.opacity(0.2))
         .onChange(of: viewModel.isLoggedIn) { oldValue, newValue in
@@ -51,6 +50,7 @@ struct AuthLoginInView: View {
                 appViewModel.currentScreen = .mainView
             }
         }
+      
     }
 }
 

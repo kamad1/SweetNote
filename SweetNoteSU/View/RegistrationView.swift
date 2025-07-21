@@ -38,7 +38,7 @@ struct RegistrationView: View {
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()
-                    .frame(width: .infinity, height: 50)
+                    .frame(height: 50)
                     .background(Color.purple)
                     .cornerRadius(20)
             }
