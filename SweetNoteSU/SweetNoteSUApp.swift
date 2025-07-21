@@ -1,10 +1,3 @@
-//
-//  SweetNoteSUApp.swift
-//  SweetNoteSU
-//
-//  Created by Jedi on 18.07.2025.
-//
-
 import SwiftUI
 import FirebaseCore
 

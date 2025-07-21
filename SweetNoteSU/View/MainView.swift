@@ -1,9 +1,3 @@
-//
-//  MainView.swift
-//  SweetNoteSU
-//
-//  Created by Jedi on 21.07.2025.
-//
 
 import SwiftUI
 

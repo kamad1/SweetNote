@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 extension View {
     func customTextField(color: Color, opacity: Double, corner1: UIRectCorner, corner2: UIRectCorner) -> some View {
         
