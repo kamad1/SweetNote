@@ -20,10 +20,11 @@ class MainViewModel: ObservableObject {
     }
     
     func presentAllUserInfo(){
-        userInfoManager.presentAllUserInfo { [unowned self] result in
+        userInfoManager.presentAllUserInfo { [weak self] result in
+            guard self != nil else { return }
             switch result {
             case .success(let success):
-                self.allUsersInfo = success
+                self?.allUsersInfo = success
             case .failure(let failure):
                 print(failure.localizedDescription)
             }
