@@ -5,7 +5,7 @@ import FirebaseCore
 struct UserInfo: Identifiable {
     var id: String {
         get {
-            return "\(name)\(surname)"
+            return "\(String(describing: name))\(String(describing: surname))"
         }
     }
     

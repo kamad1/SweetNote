@@ -3,65 +3,65 @@ import SwiftUI
 
 
 struct MainView: View {
+//    @State var isEditingNote: Bool? = false
     @StateObject var vm = MainViewModel()
     @EnvironmentObject var viewModel: AppViewModel
+    
     var body: some View {
-        Text("MainView")
-        
         VStack {
-            VStack(alignment: .center) {
+            NavigationStack {
                 VStack(alignment: .leading) {
-                    HStack {
-                        Text("Name")
-                        Spacer()
-                        Text(vm.userInfo?.name ?? "No name)")
-                    }
-                    HStack {
-                        Text("Surname")
-                        Spacer()
-                        Text(vm.userInfo?.surname ?? "No Surname)")
-                    }
-                    
-                }
-                .padding(.horizontal, 30)
-//                Spacer()
-//                Button {
-//                    vm.signOut()
-//                    viewModel.currentScreen = .registrationView
-//                } label: {
-//                    Text("Выйти из аккаунта")
-//                }
-            }
-            .onAppear {
-                vm.presentUserInfo()
-            }
-            
-            List {
-                ForEach(vm.allUsersInfo) { user in
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("Name")
-                            Spacer()
-                            Text(user.name ?? "No name)")
+                    List {
+                        ForEach(vm.allNotes) { item in
+                            VStack(alignment: .leading){
+                                HStack{
+                                    Text(item.title)
+                                        .font(.headline)
+                                    Spacer()
+                                    Text(item.date.dateToString())
+                                        .font(.caption)
+                                }
+                                Text(item.content)
+                                    .font(.subheadline)
+                                    .foregroundStyle(.gray)
+                            }
+                            .onTapGesture {
+                                $vm.isEditingNote?.toggle()
+                                vm.editingNoteID = item.id
+                            }
                         }
-                        HStack {
-                            Text("Surname")
-                            Spacer()
-                            Text(user.surname ?? "No Surname)")
+                        .onDelete { indexSet in
+                            for index in indexSet {
+                                let id = vm.allNotes[index].id
+                                vm.deleteNote(id: id)
+                            }
+                        }
+                    }
+                    .alert("Редактировать", isPresented: $vm.isEditingNote) {
+                        TextField("New Title", text: $vm.newTitle)
+                        Button("cancel", role: .cancel)
+                        Button {
+                            vm.updateNote()
+                        } label: {
+                            Text("Save")
                         }
                     }
                 }
+                .navigationTitle(Text(vm.userInfo?.name ?? "No name"))
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            vm.signOut()
+                            viewModel.currentScreen = .registrationView
+                        } label: {
+                            Text("Выйти из аккаунта")
+                        }
+                    }
+                }
             }
-            .onAppear {
-                vm.presentAllUserInfo()
-            }
-            Spacer()
-            Button {
-                vm.signOut()
-                viewModel.currentScreen = .registrationView
-            } label: {
-                Text("Выйти из аккаунта")
-            }
+//            .onAppear {
+////                vm.presentUserInfo()
+//            }
         }
         
         

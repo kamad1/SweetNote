@@ -23,7 +23,7 @@ struct SweetNoteSUApp: App {
                 AuthLoginInView()
                     .environmentObject(appViewodel)
             case .mainView:
-                MainView()
+                AppView()
                     .environmentObject(appViewodel)
             }
             
