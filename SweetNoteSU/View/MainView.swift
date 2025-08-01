@@ -37,15 +37,15 @@ struct MainView: View {
                             }
                         }
                     }
-                    .alert("Редактировать", isPresented: $vm.isEditingNote) {
-                        TextField("New Title", text: $vm.newTitle)
-                        Button("cancel", role: .cancel)
-                        Button {
-                            vm.updateNote()
-                        } label: {
-                            Text("Save")
-                        }
-                    }
+//                    .alert("Редактировать", isPresented: $vm.isEditingNote) {
+//                        TextField("New Title", text: $vm.newTitle)
+//                        Button("cancel", role: .cancel)
+//                        Button {
+//                            vm.updateNote()
+//                        } label: {
+//                            Text("Save")
+//                        }
+//                    }
                 }
                 .navigationTitle(Text(vm.userInfo?.name ?? "No name"))
                 .toolbar {
